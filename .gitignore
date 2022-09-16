@@ -1,0 +1,11 @@
+
+# Godot-specific ignores
+.import/
+export.cfg
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# macOS-specific ignores
+.DS_Store
