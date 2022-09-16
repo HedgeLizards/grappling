@@ -40,3 +40,9 @@ position = Vector2( 500, 200 )
 
 [node name="Ship" parent="." instance=ExtResource( 5 )]
 position = Vector2( -100, 300 )
+
+[node name="Ship3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -52, 329 )
+
+[node name="Ship2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -162, 321 )
