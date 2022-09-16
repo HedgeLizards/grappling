@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var speed = 80;
 var drot = 0.3;
-var hunting = false;
+var hunting = true;
 var hunt_rotation = 0.4
 var hunt_aim = 0.3
 var shoot_range = 400
