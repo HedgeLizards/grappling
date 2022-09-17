@@ -57,6 +57,7 @@ func shoot(angle):
 	bullet.global_transform = global_transform
 	bullet.rotation += angle
 	get_node("/root/Main").add_child(bullet)
+	$Cannon.play()
 
 func _on_AITime_timeout():
 	var possible_dangers = $DangerZone.get_overlapping_bodies()
