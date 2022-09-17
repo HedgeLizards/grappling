@@ -39,10 +39,16 @@ initial_velocity = 30.0
 position = Vector2( 500, 200 )
 
 [node name="Ship" parent="." instance=ExtResource( 5 )]
-position = Vector2( -100, 300 )
+position = Vector2( -146, 441 )
+
+[node name="Ship4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -147, 40 )
+rotation = -3.3999
+scale = Vector2( 0.993, 1 )
 
 [node name="Ship3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -52, 329 )
+position = Vector2( -14, 358 )
 
 [node name="Ship2" parent="." instance=ExtResource( 5 )]
-position = Vector2( -162, 321 )
+position = Vector2( -403, 272 )
+rotation = 1.18333

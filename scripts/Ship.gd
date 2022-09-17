@@ -25,9 +25,13 @@ func rad_sub(a, b):
 		d -= 2 * PI
 	return d
 
+func rad_abs(a):
+	var d = fposmod(a, 2*PI)
+	return min(a, 2*PI - a)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AITime.wait_time = randf() * 0.5
 
 
 func _physics_process(delta):
@@ -56,6 +60,23 @@ func shoot(angle):
 	get_node("/root/Main").add_child(bullet)
 
 func _on_AITime_timeout():
+	var possible_dangers = $DangerZone.get_overlapping_bodies()
+	var balance = 0
+	for body in possible_dangers:
+		if body.position == position:
+			continue
+		#var local_pos = to_local(body.position)
+		var db = 100/position.distance_to(body.position)
+		if rad_gt(get_angle_to(body.position)-PI/2, 0):
+			balance += db
+		else:
+			balance -= db
+	if balance > 0:
+		drot = hunt_rotation
+		return
+	elif balance < 0:
+		drot = -hunt_rotation
+		return
 	if hunting:
 		var player_pos = get_node("/root/Main/Player").position
 		#var player_dir = rel_player_pos.y / rel_player_pos.x
@@ -72,4 +93,4 @@ func _on_AITime_timeout():
 		else:
 			drot = turn_towards(player_dir, hunt_aim) * hunt_rotation
 	else:
-		drot = rand_range(-0.3, 0.3)
+		drot = 0#rand_range(-0.3, 0.3)
