@@ -4,7 +4,7 @@ extends KinematicBody2D
 var speed = 80;
 var drot = 0.3;
 var hunting = true;
-var hunt_rotation = 0.5
+var hunt_rotation = 0.7
 var hunt_aim = 0.1
 var shoot_range = 400
 var shoot_cooldown = 0
@@ -94,3 +94,6 @@ func _on_AITime_timeout():
 			drot = turn_towards(player_dir, hunt_aim) * hunt_rotation
 	else:
 		drot = 0#rand_range(-0.3, 0.3)
+
+func die():
+	queue_free()

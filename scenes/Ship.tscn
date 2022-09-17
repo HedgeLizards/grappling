@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( -20, 0, 20, 0, 50, -200, -50, -200 )
+points = PoolVector2Array( -20, 0, 20, 0, 100, -100, 0, -300, -100, -100 )
 
 [node name="Ship" type="KinematicBody2D"]
 script = ExtResource( 2 )

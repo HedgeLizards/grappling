@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/foam.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Ram.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 25 )
@@ -11,6 +12,9 @@ extents = Vector2( 8, 25 )
 min_value = 1.0
 max_value = 2.0
 _data = [ Vector2( 0.011745, 1 ), 0.0, 1.12186, 0, 0, Vector2( 0.964765, 1.98466 ), 1.28653, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 7, 10 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 200, 300 )
@@ -45,6 +49,15 @@ emission_rect_extents = Vector2( 5, 1 )
 direction = Vector2( -1, 0 )
 spread = 20.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 20.0
+initial_velocity = 30.0
 initial_velocity_random = 1.0
 scale_amount_curve = SubResource( 3 )
+
+[node name="Ram" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ram"]
+position = Vector2( 0, -22 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="Ram" to="Ram" method="_on_Ram_body_entered"]
