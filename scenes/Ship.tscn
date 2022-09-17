@@ -1,18 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/ship.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Ship.gd" type="Script" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( -20, 0, 20, 0, 100, -100, 0, -300, -100, -100 )
 
 [node name="Ship" type="KinematicBody2D"]
+collision_layer = 6
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12, -32, 12, -32, 12, 32, -12, 32 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

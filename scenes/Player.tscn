@@ -5,8 +5,8 @@
 [ext_resource path="res://assets/foam.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Ram.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 25 )
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 16 )
 
 [sub_resource type="Curve" id=3]
 min_value = 1.0
@@ -14,18 +14,18 @@ max_value = 2.0
 _data = [ Vector2( 0.011745, 1 ), 0.0, 1.12186, 0, 0, Vector2( 0.964765, 1.98466 ), 1.28653, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 7, 10 )
+extents = Vector2( 32, 32 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 200, 300 )
+scale = Vector2( 0.3, 1 )
+collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 5, 24 )
@@ -54,10 +54,12 @@ initial_velocity_random = 1.0
 scale_amount_curve = SubResource( 3 )
 
 [node name="Ram" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ram"]
-position = Vector2( 0, -22 )
 shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Ram" to="Ram" method="_on_Ram_body_entered"]

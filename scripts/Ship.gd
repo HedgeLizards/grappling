@@ -11,9 +11,8 @@ var shoot_cooldown = 0
 
 const Bullet = preload("res://scenes/Bullet.tscn")
 
-
 func rad_gt(a, b):
-	var d = fposmod(a - b, 2*PI)
+	var d = fposmod(a - b, 2*PI) 
 	return d < PI
 
 func rad_lt(a, b):

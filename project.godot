@@ -12,7 +12,15 @@ config_version=4
 
 config/name="Grapplinghook"
 run/main_scene="res://scenes/Main.tscn"
-config/icon="res://icon.png"
+
+[debug]
+
+settings/fps/force_fps=240
+gdscript/warnings/enable=false
+
+[display]
+
+window/energy_saving/keep_screen_on=false
 
 [gui]
 
@@ -55,6 +63,17 @@ idle={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Collidable"
+2d_physics/layer_2="Grappable"
+2d_physics/layer_3="Rammable"
+2d_physics/layer_4="Shootable"
+
+[logging]
+
+file_logging/enable_file_logging.pc=false
+
 [physics]
 
 common/enable_pause_aware_picking=true
@@ -62,6 +81,6 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=1
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
