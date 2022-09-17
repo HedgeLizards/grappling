@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AMB_Atmosphere.ogg-bf828e38a311c04242fbe300af308c57.oggstr"
+
+[deps]
+
+source_file="res://assets/AMB_Atmosphere.ogg"
+dest_files=[ "res://.import/AMB_Atmosphere.ogg-bf828e38a311c04242fbe300af308c57.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -68,7 +68,7 @@ func _physics_process(delta):
 			
 			var collider = $RayCast2D.get_collider()
 			
-			if collider != null:
+			if collider != null and !("Bullet" in collider.name):
 				var collision_point = $RayCast2D.get_collision_point()
 				
 				points.insert(1, collision_point - position)
