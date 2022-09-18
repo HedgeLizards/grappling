@@ -19,8 +19,6 @@ script = ExtResource( 8 )
 [node name="Sea" type="TextureRect" parent="Environment"]
 margin_left = -20000.0
 margin_top = -20000.0
-margin_right = 20000.0
-margin_bottom = 20000.0
 rect_scale = Vector2( 2, 2 )
 mouse_filter = 2
 texture = ExtResource( 2 )
