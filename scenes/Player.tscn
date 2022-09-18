@@ -29,9 +29,6 @@ texture = ExtResource( 2 )
 z_index = 1
 texture = ExtResource( 5 )
 
-[node name="Position" type="Position2D" parent="Harpoon"]
-position = Vector2( 0, -34.5 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 16 )
