@@ -10,6 +10,7 @@ var shoot_range = 400
 var shoot_cooldown = 0
 
 const Bullet = preload("res://scenes/Bullet.tscn")
+const Wreck = preload("res://scenes/Wreck.tscn")
 
 func rad_gt(a, b):
 	var d = fposmod(a - b, 2*PI)
@@ -96,4 +97,7 @@ func _on_AITime_timeout():
 		drot = 0#rand_range(-0.3, 0.3)
 
 func die():
+	var wreck = Wreck.instance()
+	wreck.transform = transform
+	get_parent().add_child(wreck)
 	queue_free()
