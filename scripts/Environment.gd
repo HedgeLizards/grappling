@@ -15,7 +15,7 @@ func _ready():
 		rock.position.x = rand_range($Sea.margin_left, $Sea.margin_right)
 		rock.position.y = rand_range($Sea.margin_top, $Sea.margin_bottom)
 		rock.rotation = rand_range(-PI, PI)
-		var rscale = rand_range(1, 2)
+		var rscale = rand_range(0.6, 2)
 		rock.scale *= rscale
 		
 		add_child(rock)
