@@ -54,7 +54,7 @@ z_index = -900
 texture = ExtResource( 15 )
 
 [node name="Explosion" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.8, 1.8 )
 z_index = 2
 frames = SubResource( 1 )
 
