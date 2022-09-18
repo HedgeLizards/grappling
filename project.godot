@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Grapplinghook"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/Menu.tscn"
 
 [debug]
 
@@ -84,3 +84,4 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=1
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0, 0, 0, 1 )

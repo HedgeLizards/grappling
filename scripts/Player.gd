@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const MAX_HEALTH = 25
 const MAX_SPEED = 500
 const ACCELERATION = 30
 const DAMPING = 20
@@ -11,13 +12,16 @@ var distance
 var angle
 var target
 
+onready var health = MAX_HEALTH setget set_health
 onready var hook = get_parent().get_node("Hook")
 onready var hook_sprite = hook.get_node("Sprite")
+onready var low_pass_filter = AudioServer.get_bus_effect(0, 0)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
 			hook.reset()
+			
 			var global_mouse_position = get_global_mouse_position()
 			
 			hook_sprite.rotation = position.angle_to_point(global_mouse_position) - 0.5 * PI
@@ -48,6 +52,9 @@ func _physics_process(delta):
 	
 	if hook.direction == null and !hook.retracting:
 		hook_sprite.rotation = position.angle_to_point(get_global_mouse_position()) - 0.5 * PI
+	
+	if health > 0:
+		self.health = min(self.health + delta, MAX_HEALTH)
 
 func detach(body):
 	if !hook.bodies.empty() && hook.bodies[-1] == body:
@@ -55,3 +62,15 @@ func detach(body):
 		hook.retracting = true
 		
 		target = null
+
+func set_health(new_value):
+	if new_value > 0:
+		low_pass_filter.cutoff_hz = (new_value / MAX_HEALTH) * 4000
+		
+		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2.0)
+	elif health > 0:
+		AudioServer.set_bus_effect_enabled(0, 0, false)
+		
+		get_tree().change_scene_to(load("res://scenes/Menu.tscn"))
+	
+	health = new_value

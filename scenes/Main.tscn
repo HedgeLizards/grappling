@@ -45,11 +45,11 @@ position = Vector2( -14, 358 )
 position = Vector2( -403, 272 )
 rotation = 1.18333
 
-[node name="MusicMain" type="AudioStreamPlayer2D" parent="."]
+[node name="MusicMain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 autoplay = true
 
-[node name="AmbientAtmosphere" type="AudioStreamPlayer2D" parent="."]
+[node name="AmbientAtmosphere" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = true
