@@ -1,15 +1,16 @@
 extends KinematicBody2D
 
 
-var speed = 80;
+var speed = 160;
 var drot = 0.3;
 var hunting = true;
 var hunt_rotation = 0.7
 var hunt_aim = 0.1
-var shoot_range = 400
+var shoot_range = 800
 var shoot_cooldown = 0
 
 const Bullet = preload("res://scenes/Bullet.tscn")
+const Wreck = preload("res://scenes/Wreck.tscn")
 
 func rad_gt(a, b):
 	var d = fposmod(a - b, 2*PI)
@@ -96,4 +97,7 @@ func _on_AITime_timeout():
 		drot = 0#rand_range(-0.3, 0.3)
 
 func die():
+	var wreck = Wreck.instance()
+	wreck.transform = transform
+	get_parent().add_child(wreck)
 	queue_free()

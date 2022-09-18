@@ -2,8 +2,8 @@ extends Camera2D
 
 const SHAKE_DURATION = 0.25
 const SHAKE_INTENSITY = 3
-const MIN_ZOOM = 0.75
-const MAX_ZOOM = 1.5
+const MIN_ZOOM = 1.5
+const MAX_ZOOM = 3
 const ZOOM_SPEED = 3
 
 var duration = 0
