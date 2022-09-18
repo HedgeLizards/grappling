@@ -18,10 +18,9 @@ z_index = -1000
 script = ExtResource( 8 )
 
 [node name="TextureRect" type="TextureRect" parent="Environment"]
-margin_left = -50000.0
-margin_top = -50000.0
-margin_right = 50000.0
-margin_bottom = 50000.0
+margin_left = -30000.0
+margin_top = -30000.0
+rect_scale = Vector2( 2, 2 )
 mouse_filter = 2
 texture = ExtResource( 10 )
 stretch_mode = 2

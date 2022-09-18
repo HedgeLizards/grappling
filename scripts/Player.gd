@@ -12,6 +12,7 @@ var distance
 var angle
 var target
 var bounds
+var cheats = false
 
 onready var health = MAX_HEALTH setget set_health
 onready var hook = get_parent().get_node("Hook")
@@ -41,7 +42,22 @@ func _unhandled_input(event):
 			
 			target = null
 
+func cheat(delta):
+	if Input.is_action_just_pressed("enable_cheats"):
+		cheats = true
+	if cheats:
+		var inp = Vector2(
+			int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left")),
+			int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+		)
+		if inp != Vector2(0,0):
+			velocity = inp.normalized() * 5000
+			# position += delta * inp * 1000
+		if Input.is_action_just_pressed("slow"):
+			velocity = velocity.normalized() * 200
+
 func _physics_process(delta):
+	cheat(delta)
 	var previous_angle = angle
 	
 	if target != null:
@@ -90,6 +106,8 @@ func set_health(new_value):
 		
 		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2.0)
 	elif health > 0:
+		if cheats:
+			return
 		AudioServer.set_bus_effect_enabled(0, 0, false)
 		
 		var wreck = preload("res://scenes/Wreck.tscn").instance()
