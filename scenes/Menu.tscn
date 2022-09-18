@@ -22,7 +22,7 @@ margin_right = 375.0
 margin_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_constants/separation = 50
+custom_constants/separation = 60
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
@@ -34,9 +34,9 @@ autowrap = true
 
 [node name="Button" type="Button" parent="."]
 margin_left = 264.0
-margin_top = 251.0
+margin_top = 261.0
 margin_right = 486.0
-margin_bottom = 354.0
+margin_bottom = 364.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
