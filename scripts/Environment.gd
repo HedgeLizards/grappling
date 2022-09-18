@@ -10,6 +10,7 @@ const Ship = preload("res://scenes/Ship.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	for i in range(nrocks):
 		var rock = Rocks[i%len(Rocks)].instance()
 		rock.position.x = rand_range($Sea.margin_left, $Sea.margin_right)
