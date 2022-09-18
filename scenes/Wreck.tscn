@@ -50,6 +50,7 @@ texture = ExtResource( 22 )
 
 [node name="Rubble" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 1.5, 1.5 )
 z_index = -900
 texture = ExtResource( 15 )
 
