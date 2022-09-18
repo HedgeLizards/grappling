@@ -53,7 +53,7 @@ rotation = 0.93026
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 1.6, 1.6 )
+zoom = Vector2( 1.75, 1.75 )
 smoothing_enabled = true
 script = ExtResource( 9 )
 
@@ -61,7 +61,7 @@ script = ExtResource( 9 )
 position = Vector2( -141, 249 )
 
 [node name="Ship3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -308, -223 )
+position = Vector2( -310, -430 )
 rotation = -3.99157
 
 [node name="Ship2" parent="." instance=ExtResource( 5 )]
