@@ -17,7 +17,6 @@ texture_mode = 1
 antialiased = true
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

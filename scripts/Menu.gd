@@ -3,7 +3,8 @@ extends VBoxContainer
 func _ready():
 	if Stats.ships_destroyed != null:
 		$Label.align = ALIGN_CENTER
-		$Label.text = "You destroyed %d ships!" % Stats.ships_destroyed
+		$Label.text = "You destroyed %d ship%s!" % [Stats.ships_destroyed, "" if Stats.ships_destroyed == 1 else "s"]
+		
 		$Button.text = "Retry"
 
 func _input(event):
