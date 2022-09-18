@@ -82,7 +82,7 @@ func set_health(new_value):
 		var wreck = preload("res://scenes/Wreck.tscn").instance()
 		
 		wreck.transform = transform
-		wreck.get_bode("Ship").visible = false
+		wreck.get_node("Ship").visible = false
 		
 		get_parent().add_child(wreck)
 		
@@ -92,9 +92,9 @@ func set_health(new_value):
 		visible = false
 		
 		hook.visible = false
-		
-		$CollionShape2D.set_deferred("disabled", true)
-		$DieTimer.start()
+		if $Shape != null:
+			$Shape.set_deferred("disabled", true)
+			$DieTimer.start()
 	
 	health = new_value
 
