@@ -1,4 +1,4 @@
-[gd_resource type="AnimatedTexture" load_steps=49 format=2]
+[gd_resource type="AnimatedTexture" load_steps=41 format=2]
 
 [ext_resource path="res://assets/sea/Sea00.png" type="Texture" id=1]
 [ext_resource path="res://assets/sea/Sea01.png" type="Texture" id=2]
@@ -40,14 +40,6 @@
 [ext_resource path="res://assets/sea/Sea37.png" type="Texture" id=38]
 [ext_resource path="res://assets/sea/Sea38.png" type="Texture" id=39]
 [ext_resource path="res://assets/sea/Sea39.png" type="Texture" id=40]
-[ext_resource path="res://assets/sea/Sea40.png" type="Texture" id=41]
-[ext_resource path="res://assets/sea/Sea41.png" type="Texture" id=42]
-[ext_resource path="res://assets/sea/Sea42.png" type="Texture" id=43]
-[ext_resource path="res://assets/sea/Sea43.png" type="Texture" id=44]
-[ext_resource path="res://assets/sea/Sea44.png" type="Texture" id=45]
-[ext_resource path="res://assets/sea/Sea45.png" type="Texture" id=46]
-[ext_resource path="res://assets/sea/Sea46.png" type="Texture" id=47]
-[ext_resource path="res://assets/sea/Sea47.png" type="Texture" id=48]
 
 [resource]
 flags = 4
@@ -132,19 +124,11 @@ frame_38/texture = ExtResource( 39 )
 frame_38/delay_sec = 0.0
 frame_39/texture = ExtResource( 40 )
 frame_39/delay_sec = 0.0
-frame_40/texture = ExtResource( 41 )
 frame_40/delay_sec = 0.0
-frame_41/texture = ExtResource( 42 )
 frame_41/delay_sec = 0.0
-frame_42/texture = ExtResource( 43 )
 frame_42/delay_sec = 0.0
-frame_43/texture = ExtResource( 44 )
 frame_43/delay_sec = 0.0
-frame_44/texture = ExtResource( 45 )
 frame_44/delay_sec = 0.0
-frame_45/texture = ExtResource( 46 )
 frame_45/delay_sec = 0.0
-frame_46/texture = ExtResource( 47 )
 frame_46/delay_sec = 0.0
-frame_47/texture = ExtResource( 48 )
 frame_47/delay_sec = 0.0
