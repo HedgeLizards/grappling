@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 const MAX_HEALTH = 25
 const MAX_SPEED = 1500
-const ACCELERATION = 60
-const DAMPING = 30
+const ACCELERATION = 75
+const DAMPING = 25
 
 var velocity = Vector2(0, -250)
 var speed
@@ -11,12 +11,18 @@ var clockwise
 var distance
 var angle
 var target
+var bounds
 
 onready var health = MAX_HEALTH setget set_health
 onready var hook = get_parent().get_node("Hook")
 onready var hook_rope = hook.get_node("Line2D")
 onready var hook_sprite = hook.get_node("Sprite")
 onready var low_pass_filter = AudioServer.get_bus_effect(0, 0)
+
+func _ready():
+	var sea = get_parent().get_node("Environment/Sea")
+	
+	bounds = Rect2(sea.rect_position, sea.rect_size * sea.rect_scale)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
@@ -54,6 +60,13 @@ func _physics_process(delta):
 		angle = position.angle_to_point(target)
 		
 		rotation += angle - previous_angle
+	elif $DieTimer.is_stopped() and (position.x < bounds.position.x or position.y < bounds.position.y or position.x >= bounds.end.x or position.y >= bounds.end.y):
+		var tween = get_tree().create_tween().set_parallel()
+		
+		tween.tween_property(self, "scale", Vector2.ZERO, 3)
+		tween.tween_property(hook, "scale", Vector2.ZERO, 3)
+		
+		die()
 	
 	if hook.direction == null and !hook.retracting:
 		hook_sprite.rotation = position.angle_to_point(get_global_mouse_position()) - 0.5 * PI
@@ -86,7 +99,6 @@ func set_health(new_value):
 		
 		get_parent().add_child(wreck)
 		
-		set_process_unhandled_input(false)
 		set_physics_process(false)
 		
 		hook.clear_bodies()
@@ -94,12 +106,17 @@ func set_health(new_value):
 		
 		visible = false
 		
-		$Shape.set_deferred("disabled", true)
-		$Ram.set_deferred("monitoring", false)
-		
-		$DieTimer.start()
+		die()
 	
 	health = new_value
+
+func die():
+	set_process_unhandled_input(false)
+	
+	$Shape.set_deferred("disabled", true)
+	$Ram.set_deferred("monitoring", false)
+	
+	$DieTimer.start()
 
 func _on_DieTimer_timeout():
 	get_tree().change_scene_to(load("res://scenes/Menu.tscn"))
