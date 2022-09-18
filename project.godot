@@ -24,6 +24,7 @@ gdscript/warnings/enable=false
 
 [display]
 
+window/size/fullscreen=true
 window/energy_saving/keep_screen_on=false
 
 [gui]
