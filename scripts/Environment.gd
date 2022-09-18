@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 export var nrocks = 200
 
-const Rocks = [preload("res://scenes/Rock.tscn"),preload("res://scenes/Rock.tscn")]
+const Rocks = [preload("res://scenes/Rock.tscn"),preload("res://scenes/Rock2.tscn")]
 const Ship = preload("res://scenes/Ship.tscn")
 
 # Called when the node enters the scene tree for the first time.

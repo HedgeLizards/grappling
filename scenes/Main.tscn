@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/SeaAnimation.tres" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/MUS_MAIN.ogg" type="AudioStream" id=7]
 [ext_resource path="res://scripts/Environment.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=9]
+[ext_resource path="res://assets/sea/edge00.png" type="Texture" id=10]
 
 [node name="Main" type="Node2D"]
 
@@ -16,11 +17,18 @@
 z_index = -1000
 script = ExtResource( 8 )
 
+[node name="TextureRect" type="TextureRect" parent="Environment"]
+margin_left = -50000.0
+margin_top = -50000.0
+margin_right = 50000.0
+margin_bottom = 50000.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+stretch_mode = 2
+
 [node name="Sea" type="TextureRect" parent="Environment"]
 margin_left = -20000.0
 margin_top = -20000.0
-margin_right = 20000.0
-margin_bottom = 20000.0
 rect_scale = Vector2( 2, 2 )
 mouse_filter = 2
 texture = ExtResource( 2 )
@@ -45,7 +53,7 @@ rotation = 0.93026
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 1.6, 1.6 )
+zoom = Vector2( 1.75, 1.75 )
 smoothing_enabled = true
 script = ExtResource( 9 )
 
@@ -53,7 +61,7 @@ script = ExtResource( 9 )
 position = Vector2( -141, 249 )
 
 [node name="Ship3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -308, -223 )
+position = Vector2( -310, -430 )
 rotation = -3.99157
 
 [node name="Ship2" parent="." instance=ExtResource( 5 )]

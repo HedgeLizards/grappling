@@ -5,7 +5,7 @@ var speed = 160;
 var drot = 0.3;
 var hunting = true;
 var hunt_rotation = 0.7
-var hunt_aim = 0.3
+var hunt_aim = 0.1
 var shoot_range = 1200
 var shoot_cooldown = 0
 var max_cooldown = 1
@@ -95,7 +95,7 @@ func ai():
 			if rad_lt(player_dir, 0):
 				desired_angle *= -1
 			drot = turn_towards(player_dir - desired_angle, hunt_aim) * hunt_rotation
-			if abs(rad_sub(desired_angle, player_dir)) < 0.1 and shoot_cooldown <= 0:
+			if abs(rad_sub(desired_angle, player_dir)) < 0.2 and shoot_cooldown <= 0:
 				shoot(desired_angle)
 				shoot_cooldown = max_cooldown
 		else:

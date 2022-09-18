@@ -5,13 +5,12 @@ const MAX_SPEED = 1500
 const ACCELERATION = 60
 const DAMPING = 30
 
-var velocity = Vector2(0, -300)
+var velocity = Vector2(0, -250)
 var speed
 var clockwise
 var distance
 var angle
 var target
-var impact_sound = 1
 
 onready var health = MAX_HEALTH setget set_health
 onready var hook = get_parent().get_node("Hook")
@@ -63,11 +62,10 @@ func _physics_process(delta):
 	else:
 		$Harpoon.global_rotation = hook_rope.points[0].angle_to_point(hook_rope.points[1]) - 0.5 * PI
 	
-	if health > 0:
-		self.health = min(self.health + delta, MAX_HEALTH)
+	self.health = min(self.health + delta, MAX_HEALTH)
 
 func detach(body):
-	if !hook.bodies.empty() && hook.bodies[-1] == body:
+	if !hook.bodies.empty() and hook.bodies[-1] == body:
 		hook.clear_bodies()
 		hook.retracting = true
 		
@@ -81,11 +79,22 @@ func set_health(new_value):
 	elif health > 0:
 		AudioServer.set_bus_effect_enabled(0, 0, false)
 		
-		get_tree().change_scene_to(load("res://scenes/Menu.tscn"))
-	
-	if health> 0 && new_value < health:
-		get_node("CannonImpact%d" % impact_sound).play()
+		var wreck = preload("res://scenes/Wreck.tscn").instance()
 		
-		impact_sound = 2 if impact_sound == 1 else 1
+		wreck.transform = transform
+		
+		get_parent().add_child(wreck)
+		
+		set_process_unhandled_input(false)
+		set_physics_process(false)
+		
+		visible = false
+		
+		hook.visible = false
+		
+		$DieTimer.start()
 	
 	health = new_value
+
+func _on_DieTimer_timeout():
+	get_tree().change_scene_to(load("res://scenes/Menu.tscn"))
