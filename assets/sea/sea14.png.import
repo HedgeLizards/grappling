@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sea14.png-1d14122e9c29d2c42b8d3707ade8503a.stex"
+path="res://.import/Sea14.png-ee5dc0f68e9dbf7ab92a3dab059bd457.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sea/sea14.png"
-dest_files=[ "res://.import/sea14.png-1d14122e9c29d2c42b8d3707ade8503a.stex" ]
+source_file="res://assets/sea/Sea14.png"
+dest_files=[ "res://.import/Sea14.png-ee5dc0f68e9dbf7ab92a3dab059bd457.stex" ]
 
 [params]
 

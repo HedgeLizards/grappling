@@ -19,11 +19,13 @@ func _on_Bullet_body_entered(body):
 	if body == player:
 		player.health -= DAMAGE
 		player.detach(self)
-	get_node("CannonImpact%d" % impact_sound).play()
-	impact_sound = 2 if impact_sound == 1 else 1
-	set_physics_process(false)
-	monitoring = false
-	visible = false
+		get_node("CannonImpact%d" % impact_sound).play()
+		impact_sound = 2 if impact_sound == 1 else 1
+		set_deferred("monitoring", false)
+		set_physics_process(false)
+		visible = false
+	else:
+		queue_free()
 
 func _on_CannonImpact_finished():
 	queue_free()
