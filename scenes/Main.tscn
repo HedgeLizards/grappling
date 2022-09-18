@@ -19,8 +19,7 @@ script = ExtResource( 8 )
 [node name="Sea" type="TextureRect" parent="Environment"]
 margin_left = -20000.0
 margin_top = -20000.0
-margin_right = 20000.0
-margin_bottom = 20000.0
+rect_scale = Vector2( 2, 2 )
 mouse_filter = 2
 texture = ExtResource( 2 )
 stretch_mode = 2
@@ -30,12 +29,15 @@ autostart = true
 
 [node name="Rock" parent="Environment" instance=ExtResource( 3 )]
 position = Vector2( 544, -427 )
+rotation = 3.02466
 
 [node name="Rock3" parent="Environment" instance=ExtResource( 3 )]
 position = Vector2( 59, -1760 )
+rotation = -0.621337
 
 [node name="Rock2" parent="Environment" instance=ExtResource( 3 )]
 position = Vector2( -858, -651 )
+rotation = 0.93026
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 

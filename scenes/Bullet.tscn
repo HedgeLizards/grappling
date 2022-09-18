@@ -15,7 +15,7 @@ audio_stream = ExtResource( 3 )
 audio_stream = SubResource( 2 )
 
 [node name="Bullet" type="Area2D" groups=["dual"]]
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 collision_layer = 2
 collision_mask = 9
 script = ExtResource( 2 )
