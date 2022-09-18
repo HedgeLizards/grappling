@@ -89,12 +89,15 @@ func set_health(new_value):
 		set_process_unhandled_input(false)
 		set_physics_process(false)
 		
+		hook.clear_bodies()
+		hook.visible = false
+		
 		visible = false
 		
-		hook.visible = false
-		if $Shape != null:
-			$Shape.set_deferred("disabled", true)
-			$DieTimer.start()
+		$Shape.set_deferred("disabled", true)
+		$Ram.set_deferred("monitoring", false)
+		
+		$DieTimer.start()
 	
 	health = new_value
 

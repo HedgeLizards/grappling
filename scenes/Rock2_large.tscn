@@ -7,7 +7,7 @@ collision_layer = 11
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -213, -73, -193, 54, -146, 131, -5, 241, 112, 209, 269, 29, 215, -60, 37, -251, -148, -162 )
+polygon = PoolVector2Array( -148, -162, 37, -251, 215, -60, 269, 29, 112, 209, -5, 241, -146, 131, -193, 54, -213, -73 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 1.8, 1.8 )
