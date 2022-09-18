@@ -1,16 +1,17 @@
 extends KinematicBody2D
 
 const MAX_HEALTH = 25
-const MAX_SPEED = 1250
+const MAX_SPEED = 1500
 const ACCELERATION = 60
-const DAMPING = 20
+const DAMPING = 30
 
-var velocity = Vector2(0, -200)
+var velocity = Vector2(0, -300)
 var speed
 var clockwise
 var distance
 var angle
 var target
+var impact_sound = 1
 
 onready var health = MAX_HEALTH setget set_health
 onready var hook = get_parent().get_node("Hook")
@@ -27,6 +28,8 @@ func _unhandled_input(event):
 			
 			hook_sprite.rotation = position.angle_to_point(global_mouse_position) - 0.5 * PI
 			hook.direction = position.direction_to(global_mouse_position)
+			
+			$HookShot.play()
 		else:
 			hook.clear_bodies()
 			hook.retracting = true
@@ -79,5 +82,10 @@ func set_health(new_value):
 		AudioServer.set_bus_effect_enabled(0, 0, false)
 		
 		get_tree().change_scene_to(load("res://scenes/Menu.tscn"))
+	
+	if health> 0 && new_value < health:
+		get_node("CannonImpact%d" % impact_sound).play()
+		
+		impact_sound = 2 if impact_sound == 1 else 1
 	
 	health = new_value

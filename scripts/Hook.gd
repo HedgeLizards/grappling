@@ -1,8 +1,8 @@
 extends Node2D
 
 const MAX_LENGTH = 2000
-const GRAPPLE_SPEED = 1500
-const RETRACT_SPEED = 1250
+const GRAPPLE_SPEED = 1750
+const RETRACT_SPEED = 1500
 
 var retracting = false
 var direction
@@ -154,6 +154,8 @@ func _physics_process(delta):
 			collider.set_physics_process(false)
 			
 			bodies.push_back(collider)
+			
+			$HookImpact.play()
 		elif points[0].distance_to(points[1]) >= MAX_LENGTH:
 			retracting = true
 	

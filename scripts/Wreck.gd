@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	$Explosion.play("default")
+	$EnemyDestroy.play()
 
 
 func _on_AnimatedSprite_animation_finished():
