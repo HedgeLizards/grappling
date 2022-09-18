@@ -11,6 +11,7 @@ var polygon
 var segment
 
 onready var player = get_parent().get_node("Player")
+onready var player_harpoon_position = player.get_node("Harpoon/Position")
 
 func _ready():
 	$RayCast2D.add_exception(player)
@@ -19,9 +20,9 @@ func _physics_process(delta):
 	var points = $Line2D.points
 	
 	if direction == null:
-		position = player.position
+		position = player_harpoon_position.global_position
 	else:
-		points[0] = player.position - position
+		points[0] = player_harpoon_position.global_position - position
 	
 	if retracting:
 		var remaining_retraction = RETRACT_SPEED * delta
@@ -164,7 +165,7 @@ func reset():
 	$Line2D.points = [Vector2.ZERO, Vector2.ZERO]
 	$Sprite.position = Vector2.ZERO
 	
-	position = player.position
+	position = player_harpoon_position.global_position
 	
 	retracting = false
 	direction = null

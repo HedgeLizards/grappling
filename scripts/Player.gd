@@ -24,8 +24,8 @@ func _unhandled_input(event):
 			
 			var global_mouse_position = get_global_mouse_position()
 			
-			hook_sprite.rotation = position.angle_to_point(global_mouse_position) - 0.5 * PI
-			hook.direction = position.direction_to(global_mouse_position)
+			hook_sprite.rotation = $Harpoon/Position.global_position.angle_to_point(global_mouse_position) - 0.5 * PI
+			hook.direction = $Harpoon/Position.global_position.direction_to(global_mouse_position)
 		else:
 			hook.clear_bodies()
 			hook.retracting = true
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		speed = min(speed + ACCELERATION * delta, MAX_SPEED)
 		angle += speed * clockwise / distance * delta
 		
-		velocity = (target + Vector2(cos(angle), sin(angle)) * distance - position) / delta
+		velocity = (target + Vector2(cos(angle), sin(angle)) * distance - $Harpoon/Position.global_position) / delta
 	else:
 		velocity = velocity.limit_length(max(velocity.length() - DAMPING * delta, 0))
 	
@@ -48,12 +48,15 @@ func _physics_process(delta):
 	$Camera2D.target_zoom = velocity.length() / MAX_SPEED
 	
 	if target != null:
-		angle = position.angle_to_point(target)
+		angle = $Harpoon/Position.global_position.angle_to_point(target)
 		
 		rotation += angle - previous_angle
 	
-	if hook.direction == null and !hook.retracting:
-		hook_sprite.rotation = position.angle_to_point(get_global_mouse_position()) - 0.5 * PI
+	if hook.direction == null:
+		hook_sprite.rotation = $Harpoon/Position.global_position.angle_to_point(get_global_mouse_position()) - 0.5 * PI
+	
+	if hook.direction == null or hook.retracting:
+		$Harpoon.global_rotation = $Harpoon/Position.global_position.angle_to_point(get_global_mouse_position()) - 0.5 * PI
 	
 	if health > 0:
 		self.health = min(self.health + delta, MAX_HEALTH)
