@@ -65,7 +65,7 @@ func detach(body):
 
 func set_health(new_value):
 	if new_value > 0:
-		low_pass_filter.cutoff_hz = (new_value / MAX_HEALTH) * 4000
+		low_pass_filter.cutoff_hz = 250 + (new_value / MAX_HEALTH) * 4000
 		
 		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2.0)
 	elif health > 0:

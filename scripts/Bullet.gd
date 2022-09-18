@@ -1,6 +1,6 @@
 extends Area2D
 
-const DAMAGE = 6
+const DAMAGE = 7
 
 export var speed = 400
 export var distance = 1600

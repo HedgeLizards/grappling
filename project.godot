@@ -13,6 +13,10 @@ config_version=4
 config/name="Grapplinghook"
 run/main_scene="res://scenes/Menu.tscn"
 
+[autoload]
+
+Stats="*res://scripts/Stats.gd"
+
 [debug]
 
 settings/fps/force_fps=240
