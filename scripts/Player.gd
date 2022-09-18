@@ -5,7 +5,7 @@ const MAX_SPEED = 500
 const ACCELERATION = 30
 const DAMPING = 20
 
-var velocity = Vector2(0, -100)
+var velocity = Vector2(0, -200)
 var speed
 var clockwise
 var distance
