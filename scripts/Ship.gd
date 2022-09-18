@@ -5,11 +5,12 @@ var speed = 160;
 var drot = 0.3;
 var hunting = true;
 var hunt_rotation = 0.7
-var hunt_aim = 0.1
-var shoot_range = 800
+var hunt_aim = 0.3
+var shoot_range = 1200
 var shoot_cooldown = 0
+var max_cooldown = 1
 
-const Bullet = preload("res://scenes/Bullet.tscn")
+const Shot = preload("res://scenes/Shot.tscn")
 const Wreck = preload("res://scenes/Wreck.tscn")
 
 func rad_gt(a, b):
@@ -35,6 +36,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	ai()
 	shoot_cooldown -= delta
 	if Input.is_action_just_pressed("hunt"):
 		hunting = true
@@ -54,13 +56,18 @@ func turn_towards(angle, accuracy):
 func shoot(angle):
 	
 	#for i in range(-1, 2):
-	var bullet = Bullet.instance()
-	bullet.global_transform = global_transform
-	bullet.rotation += angle
-	get_node("/root/Main").add_child(bullet)
+	var shot = Shot.instance()
+	shot.rotation = angle
+	if rad_gt(angle, 0):
+		$GunBarrelRight.add_child(shot)
+	else:
+		$GunBarrelLeft.add_child(shot)
 	$Cannon.play()
 
 func _on_AITime_timeout():
+	pass
+	
+func ai():
 	var possible_dangers = $DangerZone.get_overlapping_bodies()
 	var balance = 0
 	for body in possible_dangers:
@@ -90,11 +97,12 @@ func _on_AITime_timeout():
 			drot = turn_towards(player_dir - desired_angle, hunt_aim) * hunt_rotation
 			if abs(rad_sub(desired_angle, player_dir)) < 0.1 and shoot_cooldown <= 0:
 				shoot(desired_angle)
-				shoot_cooldown = 2
+				shoot_cooldown = max_cooldown
 		else:
 			drot = turn_towards(player_dir, hunt_aim) * hunt_rotation
 	else:
 		drot = 0#rand_range(-0.3, 0.3)
+		shoot(PI/2)
 
 func die():
 	var wreck = Wreck.instance()

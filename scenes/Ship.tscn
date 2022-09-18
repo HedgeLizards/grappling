@@ -26,4 +26,10 @@ polygon = PoolVector2Array( -100, 0, 100, 0, 400, -400, 0, -1200, -400, -400 )
 [node name="Cannon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
+[node name="GunBarrelRight" type="Node2D" parent="."]
+position = Vector2( 90, 50 )
+
+[node name="GunBarrelLeft" type="Node2D" parent="."]
+position = Vector2( -90, 50 )
+
 [connection signal="timeout" from="AITime" to="." method="_on_AITime_timeout"]
