@@ -21,9 +21,13 @@ collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 9.53674e-07, -9.53674e-07 )
+scale = Vector2( 1.77273, 1.77273 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 4.76837e-07, -2.38419e-07 )
+scale = Vector2( 1.76599, 1.75959 )
 polygon = PoolVector2Array( -10.5, -3, -5, -10.5, 4, -10.5, 11, -4, 10.5, 5, 4.5, 10.5, -5.5, 10, -10.5, 3 )
 
 [node name="CannonImpact1" type="AudioStreamPlayer" parent="."]

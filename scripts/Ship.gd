@@ -43,7 +43,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("idle"):
 		hunting = false
 	rotation += drot * delta 
-	move_local_y(-delta * speed)
+	move_and_slide(Vector2(0, -speed).rotated(rotation))
 
 func turn_towards(angle, accuracy):
 	if rad_gt(angle, accuracy):
