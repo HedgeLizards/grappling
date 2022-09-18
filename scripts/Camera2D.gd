@@ -1,10 +1,10 @@
 extends Camera2D
 
-const SHAKE_DURATION = 0.25
-const SHAKE_INTENSITY = 3
-const MIN_ZOOM = 1.5
-const MAX_ZOOM = 3
-const ZOOM_SPEED = 3
+const SHAKE_DURATION = 0.5
+const SHAKE_INTENSITY = 50
+const MIN_ZOOM = 1
+const MAX_ZOOM = 4
+const ZOOM_SPEED = 5
 
 var duration = 0
 
@@ -15,7 +15,7 @@ func shake():
 
 func _process(delta):
 	if duration > 0:
-		duration = max(delta - duration, 0)
+		duration = max(duration - delta, 0)
 		
 		offset = Vector2(randf(), randf()) * SHAKE_INTENSITY * (duration / SHAKE_DURATION)
 	

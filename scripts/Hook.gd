@@ -1,8 +1,8 @@
 extends Node2D
 
-const MAX_LENGTH = 1000
-const GRAPPLE_SPEED = 750
-const RETRACT_SPEED = 750
+const MAX_LENGTH = 2000
+const GRAPPLE_SPEED = 1500
+const RETRACT_SPEED = 1250
 
 var retracting = false
 var direction
@@ -150,9 +150,9 @@ func _physics_process(delta):
 				$RayCast2D.remove_exception(bodies[-1])
 			
 			$RayCast2D.add_exception(collider)
-				
+			
 			collider.set_physics_process(false)
-				
+			
 			bodies.push_back(collider)
 		elif points[0].distance_to(points[1]) >= MAX_LENGTH:
 			retracting = true

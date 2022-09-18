@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/player_ship.png" type="Texture" id=2]
 [ext_resource path="res://assets/foam.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Ram.gd" type="Script" id=4]
+[ext_resource path="res://assets/player/harpoon.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 32, 32 )
+extents = Vector2( 64, 64 )
 
 [sub_resource type="Curve" id=3]
 min_value = 1.0
@@ -14,20 +15,27 @@ max_value = 2.0
 _data = [ Vector2( 0.011745, 1 ), 0.0, 1.12186, 0, 0, Vector2( 0.964765, 1.98466 ), 1.28653, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 32, 32 )
+extents = Vector2( 64, 64 )
 
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 0.3, 1 )
 collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1, -14 )
 texture = ExtResource( 2 )
 
+[node name="Harpoon" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 5 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 16 )
 shape = SubResource( 5 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( 5, 24 )
 amount = 10
 local_coords = false
@@ -40,6 +48,7 @@ initial_velocity = 30.0
 scale_amount_curve = SubResource( 3 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2( -5, 24 )
 amount = 10
 local_coords = false
@@ -60,6 +69,8 @@ monitorable = false
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ram"]
+visible = false
+position = Vector2( 0, 16 )
 shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Ram" to="Ram" method="_on_Ram_body_entered"]
