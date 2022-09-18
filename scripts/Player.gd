@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 const MAX_HEALTH = 25
-const MAX_SPEED = 500
-const ACCELERATION = 30
+const MAX_SPEED = 1250
+const ACCELERATION = 60
 const DAMPING = 20
 
 var velocity = Vector2(0, -200)
