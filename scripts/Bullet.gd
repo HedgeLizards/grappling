@@ -16,6 +16,7 @@ func _physics_process(delta):
 
 
 func _on_Bullet_body_entered(body):
-	player.health -= DAMAGE
-	player.detach(self)
-	queue_free()
+	if body == player:
+		player.health -= DAMAGE
+		player.detach(self)
+		queue_free()

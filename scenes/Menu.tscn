@@ -23,6 +23,7 @@ margin_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 60
+alignment = 1
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
@@ -37,9 +38,8 @@ margin_left = 264.0
 margin_top = 261.0
 margin_right = 486.0
 margin_bottom = 364.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
 text = "Yarrr!"
-
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

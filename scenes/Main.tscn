@@ -1,22 +1,34 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sea.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Rock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/AMB_Atmosphere.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Hook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/MUS_MAIN.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scripts/Environment.gd" type="Script" id=8]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=9]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 2
+fps = 6.0
+frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
 
 [node name="Main" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Environment" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Sea" type="TextureRect" parent="Environment"]
 margin_left = -5000.0
 margin_top = -5000.0
 margin_right = 5000.0
 margin_bottom = 5000.0
 mouse_filter = 2
-texture = ExtResource( 2 )
+texture = SubResource( 1 )
 stretch_mode = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -24,11 +36,9 @@ stretch_mode = 2
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 smoothing_enabled = true
+script = ExtResource( 9 )
 
 [node name="Hook" parent="." instance=ExtResource( 6 )]
-
-[node name="Rock" parent="." instance=ExtResource( 3 )]
-position = Vector2( 500, 200 )
 
 [node name="Ship" parent="." instance=ExtResource( 5 )]
 position = Vector2( -146, 441 )

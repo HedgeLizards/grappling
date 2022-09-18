@@ -6,5 +6,6 @@ func _ready():
 		$Label.text = "You destroyed %d ships!" % Stats.ships_destroyed
 		$Button.text = "Retry"
 
-func _on_Button_pressed():
-	get_tree().change_scene_to(preload("res://scenes/Main.tscn"))
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and !event.pressed:
+		get_tree().change_scene_to(preload("res://scenes/Main.tscn"))
