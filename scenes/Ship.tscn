@@ -1,18 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/ship.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemy/enemy_ship.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Ship.gd" type="Script" id=2]
 [ext_resource path="res://assets/SFX_Canon.wav" type="AudioStream" id=3]
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( -20, 0, 20, 0, 100, -100, 0, -300, -100, -100 )
 
 [node name="Ship" type="KinematicBody2D"]
 collision_layer = 6
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -12, -32, 12, -32, 12, 32, -12, 32 )
+polygon = PoolVector2Array( 0, -103, 37, -70, 67, -24, 66, 77, 39, 151, -33, 151, -63, 73, -63, -24, -38, -72 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -23,8 +20,8 @@ autostart = true
 
 [node name="DangerZone" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
-shape = SubResource( 2 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DangerZone"]
+polygon = PoolVector2Array( -100, 0, 100, 0, 400, -400, 0, -1200, -400, -400 )
 
 [node name="Cannon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )

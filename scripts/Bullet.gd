@@ -2,8 +2,8 @@ extends Area2D
 
 const DAMAGE = 7
 
-export var speed = 400
-export var distance = 1600
+export var speed = 800
+export var distance = 3200
 
 onready var player = get_parent().get_node("Player")
 

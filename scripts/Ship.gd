@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 
-var speed = 80;
+var speed = 160;
 var drot = 0.3;
 var hunting = true;
 var hunt_rotation = 0.7
 var hunt_aim = 0.1
-var shoot_range = 400
+var shoot_range = 800
 var shoot_cooldown = 0
 
 const Bullet = preload("res://scenes/Bullet.tscn")
