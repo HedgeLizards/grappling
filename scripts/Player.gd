@@ -45,6 +45,8 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
+	$Camera2D.target_zoom = velocity.length() / MAX_SPEED
+	
 	if target != null:
 		angle = position.angle_to_point(target)
 		

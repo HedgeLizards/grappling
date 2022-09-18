@@ -94,6 +94,9 @@ func _physics_process(delta):
 					
 					previous_vertex = vertex
 				
+				if !bodies.empty():
+					$RayCast2D.remove_exception(bodies[-1])
+				
 				$RayCast2D.add_exception(collider)
 				
 				collider.set_physics_process(false)
@@ -143,6 +146,9 @@ func _physics_process(delta):
 			if player.clockwise == -1:
 				segment = fposmod(segment - 1, polygon.size())
 			
+			if !bodies.empty():
+				$RayCast2D.remove_exception(bodies[-1])
+			
 			$RayCast2D.add_exception(collider)
 				
 			collider.set_physics_process(false)
@@ -164,10 +170,12 @@ func reset():
 	direction = null
 
 func clear_bodies():
+	if !bodies.empty():
+		if is_instance_valid(bodies[-1]):
+			$RayCast2D.remove_exception(bodies[-1])
+	
 	for body in bodies:
 		if is_instance_valid(body):
-			$RayCast2D.remove_exception(body)
-			print(body)
 			body.set_physics_process(true)
 	
 	bodies.clear()
