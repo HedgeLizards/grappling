@@ -5,12 +5,7 @@ extends Node2D
 # var a = 2
 export var nrocks = 200
 
-const Rocks = [
-	preload("res://scenes/Rock.tscn"),
-	preload("res://scenes/Rock2.tscn"),
-	preload("res://scenes/Rock_large.tscn"),
-	preload("res://scenes/Rock2_large.tscn")
-]
+const Rocks = [preload("res://scenes/Rock.tscn"),preload("res://scenes/Rock2.tscn")]
 const Ship = preload("res://scenes/Ship.tscn")
 const Edge = preload("res://scenes/Edge.tscn")
 const edge_segment_width = 2000
@@ -28,8 +23,8 @@ func _ready():
 		rock.position.x = rand_range(xmin, xmax)
 		rock.position.y = rand_range(ymin, ymax)
 		rock.rotation = rand_range(-PI, PI)
-		# var rscale = rand_range(0.6, 2)
-		# rock.scale *= rscale
+		var rscale = rand_range(0.6, 2)
+		rock.scale *= rscale
 		
 		add_child(rock)
 	for x in range(xmin+edge_segment_width/2, xmax, edge_segment_width):

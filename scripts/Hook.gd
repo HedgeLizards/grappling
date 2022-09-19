@@ -77,7 +77,12 @@ func _physics_process(delta):
 				player.angle = points[0].angle_to_point(points[1])
 				player.target = position + points[1]
 				
-				polygon = Transform2D(collider.rotation, collider.position).xform(collider.get_node("CollisionPolygon2D").polygon)
+				polygon = collider.get_node("CollisionPolygon2D").polygon
+				
+				for i in polygon.size():
+					polygon[i] *= collider.scale
+				
+				polygon = Transform2D(collider.rotation, collider.position).xform(polygon)
 				
 				var previous_vertex = polygon[polygon.size() - 1]
 				var min_distance = INF
@@ -126,7 +131,12 @@ func _physics_process(delta):
 			player.angle = points[0].angle_to_point(points[1])
 			player.target = position + points[1]
 			
-			polygon = Transform2D(collider.rotation, collider.position).xform(collider.get_node("CollisionPolygon2D").polygon)
+			polygon = collider.get_node("CollisionPolygon2D").polygon
+			
+			for i in polygon.size():
+				polygon[i] *= collider.scale
+			
+			polygon = Transform2D(collider.rotation, collider.position).xform(polygon)
 			
 			var previous_vertex = polygon[polygon.size() - 1]
 			var min_distance = INF
