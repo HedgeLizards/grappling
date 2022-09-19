@@ -82,6 +82,7 @@ func _physics_process(delta):
 	elif $DieTimer.is_stopped() and (position.x < bounds.position.x or position.y < bounds.position.y or position.x >= bounds.end.x or position.y >= bounds.end.y):
 		var tween = get_tree().create_tween().set_parallel()
 		
+		tween.tween_method(self, "set_health", min(health, MAX_HEALTH / 2.0), 0.0, 5)
 		tween.tween_property(self, "scale", Vector2.ZERO, 3)
 		tween.tween_property(hook, "scale", Vector2.ZERO, 3)
 		
@@ -104,15 +105,13 @@ func detach(body):
 		target = null
 
 func set_health(new_value):
-	if new_value > 0:
-		low_pass_filter.cutoff_hz = 250 + (new_value / MAX_HEALTH) * 4000
+	if new_value >= 0:
+		low_pass_filter.cutoff_hz = (new_value / MAX_HEALTH) * 4000
 		
 		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2.0)
 	elif health > 0:
 		if cheats:
 			return
-		AudioServer.set_bus_effect_enabled(0, 0, false)
-		
 		var wreck = preload("res://scenes/Wreck.tscn").instance()
 		
 		wreck.transform = transform
