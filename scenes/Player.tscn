@@ -7,16 +7,16 @@
 [ext_resource path="res://assets/player/harpoon.png" type="Texture" id=5]
 [ext_resource path="res://assets/SFX_HookShot.wav" type="AudioStream" id=8]
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 60, 60 )
+[sub_resource type="CircleShape2D" id=5]
+radius = 64.0
 
 [sub_resource type="Curve" id=3]
 min_value = 1.0
 max_value = 2.0
 _data = [ Vector2( 0.011745, 1 ), 0.0, 1.12186, 0, 0, Vector2( 0.964765, 1.98466 ), 1.28653, 0.0, 0, 0 ]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 60, 60 )
+[sub_resource type="CircleShape2D" id=6]
+radius = 64.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 8
@@ -71,7 +71,7 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ram"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="HookShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

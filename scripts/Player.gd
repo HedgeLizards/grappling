@@ -59,12 +59,14 @@ func cheat(delta):
 func _physics_process(delta):
 	cheat(delta)
 	var previous_angle = angle
+	var previous_speed
 	
 	if target != null:
 		speed = min(speed + ACCELERATION * delta, MAX_SPEED)
 		angle += speed * clockwise / distance * delta
 		
 		velocity = (target + Vector2(cos(angle), sin(angle)) * distance - position) / delta
+		previous_speed = velocity.length()
 	else:
 		velocity = velocity.limit_length(max(velocity.length() - DAMPING * delta, 0))
 	
@@ -73,6 +75,7 @@ func _physics_process(delta):
 	$Camera2D.target_zoom = velocity.length() / MAX_SPEED
 	
 	if target != null:
+		speed *= previous_speed / velocity.length()
 		angle = position.angle_to_point(target)
 		
 		rotation += angle - previous_angle
