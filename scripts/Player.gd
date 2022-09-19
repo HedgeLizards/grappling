@@ -37,10 +37,13 @@ func _unhandled_input(event):
 			
 			$HookShot.play()
 		else:
-			hook.clear_bodies()
-			hook.retracting = true
-			
-			target = null
+			release()
+
+func release():
+	hook.clear_bodies()
+	hook.retracting = true
+	
+	target = null
 
 func cheat(delta):
 	if Input.is_action_just_pressed("enable_cheats"):
@@ -70,7 +73,14 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.limit_length(max(velocity.length() - DAMPING * delta, 0))
 	
-	velocity = move_and_slide(velocity)
+	var collision = move_and_collide(velocity * delta)
+	if collision != null:
+		if target != null:
+			release()
+		velocity = -velocity.reflect(collision.normal) * 0.5
+		move_and_collide(-collision.remainder.reflect(collision.normal))
+		
+	#velocity = move_and_slide(velocity)
 	
 	$Camera2D.target_zoom = velocity.length() / MAX_SPEED
 	

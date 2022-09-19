@@ -54,8 +54,8 @@ func _ready():
 func _on_SpawnTimer_timeout():
 	var ship = Ship.instance()
 	ship.position = Vector2(
-		rand_range($Sea.margin_left, $Sea.margin_right),
-		rand_range($Sea.margin_top, $Sea.margin_bottom)
+		rand_range(xmin, xmax),
+		rand_range(ymin, ymax)
 	)
 	ship.rotation = rand_range(-PI, PI)
 	get_parent().add_child(ship)
