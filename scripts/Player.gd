@@ -112,10 +112,7 @@ func _physics_process(delta):
 
 func detach(body):
 	if !hook.bodies.empty() and hook.bodies[-1] == body:
-		hook.clear_bodies()
-		hook.retracting = true
-		
-		target = null
+		release()
 
 func set_health(new_value):
 	if new_value >= 0:
