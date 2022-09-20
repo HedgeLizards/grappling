@@ -73,14 +73,17 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.limit_length(max(velocity.length() - DAMPING * delta, 0))
 	
+	var previous_transform = transform
 	var collision = move_and_collide(velocity * delta)
 	if collision != null:
-		if target != null:
-			release()
-		velocity = -velocity.reflect(collision.normal) * 0.5
-		move_and_collide(-collision.remainder.reflect(collision.normal))
-		
-	#velocity = move_and_slide(velocity)
+		if target != null and collision.collider == hook.bodies[0]:
+			transform = previous_transform
+			velocity = move_and_slide(velocity)
+		else:
+			if target != null:
+				release()
+			velocity = -velocity.reflect(collision.normal) * 0.4
+			move_and_collide(-collision.remainder.reflect(collision.normal))
 	
 	$Camera2D.target_zoom = velocity.length() / MAX_SPEED
 	
