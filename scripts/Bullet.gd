@@ -18,6 +18,7 @@ func _physics_process(delta):
 func _on_Bullet_body_entered(body):
 	if body == player:
 		player.health -= DAMAGE
+		player.get_node("Camera2D").shake(20)
 		player.detach(self)
 		get_node("CannonImpact%d" % impact_sound).play()
 		impact_sound = 2 if impact_sound == 1 else 1

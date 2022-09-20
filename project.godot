@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Grapplinghook"
+config/name="Ship Happens"
 run/main_scene="res://scenes/Menu.tscn"
 
 [autoload]
