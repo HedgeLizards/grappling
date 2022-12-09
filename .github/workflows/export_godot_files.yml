@@ -29,7 +29,7 @@ jobs:
         # Ensure that you get the entire project history
         with:
           fetch-depth: 0
-
+      - run: keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999 -deststoretype pkcs12
       - name: export game
         # Use latest version (see releases for all versions)
         uses: firebelley/godot-export@v4.4.0
