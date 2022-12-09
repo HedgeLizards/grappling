@@ -27,6 +27,10 @@ gdscript/warnings/enable=false
 window/size/fullscreen=true
 window/energy_saving/keep_screen_on=false
 
+[global]
+
+export=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
