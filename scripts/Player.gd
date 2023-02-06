@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const MAX_HEALTH = 100 # I modified this value: 25 to 100. - Milan
 const MAX_SPEED = 1500
-const ACCELERATION = 200
+const ACCELERATION = 200 # I modified this value: 75 to 200. - Milan
 const DAMPING = 25
 
 var velocity = Vector2(0, -250)
@@ -109,8 +109,7 @@ func _physics_process(delta):
 		$Harpoon.global_rotation = hook_rope.points[0].angle_to_point(hook_rope.points[1]) - 0.5 * PI
 	
 	#  I modified this code: delta * 4 because health was increased from 25 t0 100. - Milan
-	self.health = min(self.health + delta * 4, MAX_HEALTH)
-	self.health = max(0, self.health + delta * 4);
+	self.health = min(self.health + delta * 2, MAX_HEALTH)
 	
 	# I added this line of code to show health in the UI. - Milan
 	if $"../User Interface/Health Label".visible == true:
@@ -131,6 +130,7 @@ func set_health(new_value):
 			return
 		var wreck = preload("res://scenes/Wreck.tscn").instance()
 		
+		# Show health as 0 in UI.
 		$"../User Interface/Health Label".text = "Health: " + str(0);
 		
 		wreck.transform = transform
