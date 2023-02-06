@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/SFX_Canon.wav" type="AudioStream" id=3]
 
 [node name="Ship" type="KinematicBody2D"]
-collision_layer = 6
+collision_layer = 14
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -25,6 +25,7 @@ polygon = PoolVector2Array( -100, 0, 100, 0, 400, -400, 0, -1200, -400, -400 )
 
 [node name="Cannon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -7.0
 max_distance = 10000.0
 attenuation = 0.105112
 

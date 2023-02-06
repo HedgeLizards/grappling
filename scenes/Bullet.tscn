@@ -30,9 +30,11 @@ polygon = PoolVector2Array( -19, -8, -8, -19, 8, -19, 19, -8, 19, 8, 8, 19, -8, 
 
 [node name="CannonImpact1" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
+volume_db = -10.0
 
 [node name="CannonImpact2" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 3 )
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="finished" from="CannonImpact1" to="." method="_on_CannonImpact_finished"]

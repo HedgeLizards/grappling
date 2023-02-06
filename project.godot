@@ -93,6 +93,10 @@ slow={
 
 file_logging/enable_file_logging.pc=false
 
+[mono]
+
+project/assembly_name="Ship Happens"
+
 [physics]
 
 common/enable_pause_aware_picking=true

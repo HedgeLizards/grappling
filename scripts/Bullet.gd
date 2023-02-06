@@ -1,8 +1,8 @@
 extends Area2D
 
-const DAMAGE = 7
+const DAMAGE = 20 # I changed this value from 7 to 20. - Milan
 
-export var speed = 800
+export var speed = 1500 # I changed this value from 800 to 1500. - Milan
 export var distance = 3200
 
 var impact_sound = 1

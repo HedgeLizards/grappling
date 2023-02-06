@@ -41,7 +41,7 @@ shape = SubResource( 4 )
 
 [node name="HookShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -2.0
+volume_db = -10.0
 
 [node name="DieTimer" type="Timer" parent="."]
 wait_time = 5.0

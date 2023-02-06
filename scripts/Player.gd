@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const MAX_HEALTH = 25
+const MAX_HEALTH = 100 # I modified this value: 25 to 100. - Milan
 const MAX_SPEED = 1500
-const ACCELERATION = 75
+const ACCELERATION = 200
 const DAMPING = 25
 
 var velocity = Vector2(0, -250)
@@ -108,7 +108,13 @@ func _physics_process(delta):
 	else:
 		$Harpoon.global_rotation = hook_rope.points[0].angle_to_point(hook_rope.points[1]) - 0.5 * PI
 	
-	self.health = min(self.health + delta, MAX_HEALTH)
+	#  I modified this code: delta * 4 because health was increased from 25 t0 100. - Milan
+	self.health = min(self.health + delta * 4, MAX_HEALTH)
+	self.health = max(0, self.health + delta * 4);
+	
+	# I added this line of code to show health in the UI. - Milan
+	if $"../User Interface/Health Label".visible == true:
+		$"../User Interface/Health Label".text = "Health: " + str(round(health)); 
 
 func detach(body):
 	if !hook.bodies.empty() and hook.bodies[-1] == body:
@@ -118,11 +124,14 @@ func set_health(new_value):
 	if new_value >= 0:
 		low_pass_filter.cutoff_hz = (new_value / MAX_HEALTH) * 4000
 		
-		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2.0)
+		AudioServer.set_bus_effect_enabled(0, 0, new_value < MAX_HEALTH / 2)
+		
 	elif health > 0:
 		if cheats:
 			return
 		var wreck = preload("res://scenes/Wreck.tscn").instance()
+		
+		$"../User Interface/Health Label".text = "Health: " + str(0);
 		
 		wreck.transform = transform
 		wreck.get_node("Ship").visible = false

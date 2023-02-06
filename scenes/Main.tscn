@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/SeaAnimation.tres" type="Texture" id=2]
@@ -10,12 +10,46 @@
 [ext_resource path="res://scripts/Environment.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://assets/sea/edge00.png" type="Texture" id=10]
+[ext_resource path="res://assets/TreasureMapDeadhand-yLA3.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://scripts/Ships Destroyed Label.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
 
 [node name="Main" type="Node2D"]
+
+[node name="User Interface" type="CanvasLayer" parent="."]
+
+[node name="Ships Destroyed Label" type="Label" parent="User Interface"]
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.02
+anchor_bottom = 0.02
+margin_right = 200.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 1 )
+text = "Ships Destroyed"
+script = ExtResource( 12 )
+
+[node name="Health Label" type="Label" parent="User Interface"]
+anchor_left = 0.5
+anchor_top = 0.98
+anchor_right = 0.5
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "Health"
 
 [node name="Environment" type="Node2D" parent="."]
 z_index = -1000
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TextureRect" type="TextureRect" parent="Environment"]
 margin_left = -30000.0
@@ -49,6 +83,9 @@ position = Vector2( -858, -651 )
 rotation = 0.93026
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -58,15 +95,51 @@ script = ExtResource( 9 )
 
 [node name="Ship" parent="." instance=ExtResource( 5 )]
 position = Vector2( -141, 249 )
-
-[node name="Ship3" parent="." instance=ExtResource( 5 )]
-position = Vector2( -310, -430 )
-rotation = -3.99157
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ship2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 90, 295 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ship3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -310, -430 )
+rotation = 2.29162
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ship4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1568, -215 )
+rotation = 2.29162
+
+[node name="Ship5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1652, -270 )
+rotation = 4.10642
+
+[node name="Ship6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 815, -1253 )
+rotation = 4.10642
+
+[node name="Ship7" parent="." instance=ExtResource( 5 )]
+position = Vector2( -873, -1233 )
+rotation = 2.28531
+
+[node name="Ship8" parent="." instance=ExtResource( 5 )]
+position = Vector2( -707, 954 )
+rotation = 0.470265
+
+[node name="Ship9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 533, 1130 )
+rotation = -0.056851
 
 [node name="Hook" parent="." instance=ExtResource( 6 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MusicMain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

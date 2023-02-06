@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
 
-var speed = 160;
+var speed = 250; # Changed this from 160 to 250.
 var drot = 0.3;
 var hunting = true;
-var hunt_rotation = 0.7
+var hunt_rotation = 1.5 # Changed this from .7 to 1.5. - Milan
 var hunt_aim = 0.1
-var shoot_range = 1200
+var shoot_range = 800
 var shoot_cooldown = 0
-var max_cooldown = 1
+var max_cooldown = .5 # Changed this from 1 to .5. - Milan
 
 const Shot = preload("res://scenes/Shot.tscn")
 const Wreck = preload("res://scenes/Wreck.tscn")

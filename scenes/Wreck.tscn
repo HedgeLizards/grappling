@@ -61,6 +61,7 @@ frames = SubResource( 1 )
 
 [node name="EnemyDestroy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 33 )
+volume_db = -10.0
 
 [connection signal="animation_finished" from="Explosion" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="Explosion" to="." method="_on_Explosion_frame_changed"]

@@ -1,8 +1,8 @@
 extends Node2D
 
-const MAX_LENGTH = 2000
-const GRAPPLE_SPEED = 1750
-const RETRACT_SPEED = 1500
+const MAX_LENGTH = 4000 # I changed this from 2000 to 4000. - Milan
+const GRAPPLE_SPEED = 5000 # I changed this from 1750 to 5000. - Milan
+const RETRACT_SPEED = 5000 # I changed this from 1500 to 5000. - Milan
 
 var retracting = false
 var direction
