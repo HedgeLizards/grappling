@@ -114,6 +114,7 @@ func _physics_process(delta):
 	# I added this line of code to show health in the UI. - Milan
 	if $"../User Interface/Health Label".visible == true:
 		$"../User Interface/Health Label".text = "Health: " + str(round(health)); 
+		$"../User Interface/Health Bar".value = health;
 
 func detach(body):
 	if !hook.bodies.empty() and hook.bodies[-1] == body:
@@ -132,6 +133,7 @@ func set_health(new_value):
 		
 		# Show health as 0 in UI.
 		$"../User Interface/Health Label".text = "Health: " + str(0);
+		$"../User Interface/Health Bar".value = 0;
 		
 		wreck.transform = transform
 		wreck.get_node("Ship").visible = false
