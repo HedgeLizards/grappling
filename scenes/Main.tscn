@@ -20,7 +20,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.819608, 0.156863, 0.156863, 1 )
+bg_color = Color( 0.694118, 0.239216, 0.211765, 0.784314 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
